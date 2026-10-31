@@ -141,6 +141,14 @@ export const BookWeb = forwardRef<BookWebHandle, Props>(function BookWeb({ path,
           Linking.openURL(nativeEvent.downloadUrl).catch(() => {});
         }}
         onError={(e) => setError(e.nativeEvent.description || 'Serveur injoignable')}
+        onHttpError={(e) => {
+          // Page absente (404) : le plus souvent, le serveur Bookloo n'est pas encore à jour
+          if (e.nativeEvent.statusCode === 404 && /\/b-[a-z]+\.html/.test(e.nativeEvent.url)) {
+            setError('Cette page n’existe pas sur ton serveur : mets à jour Bookloo (image ghcr.io/nono7444/bookloo).');
+          } else if (e.nativeEvent.statusCode >= 500) {
+            setError(`Le serveur Bookloo a répondu ${e.nativeEvent.statusCode}.`);
+          }
+        }}
         onContentProcessDidTerminate={() => web.current?.reload()}
       />
       {error ? (
