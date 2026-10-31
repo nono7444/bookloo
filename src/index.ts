@@ -32,6 +32,7 @@ import { routesLecturePdf } from './routes/lecture-pdf';
 import { routesEmpreinte } from './routes/empreinte';
 import { routesAdmin } from './routes/admin';
 import { routesSimple } from './simple/routes';
+import { routesLivres } from './simple/livres';
 import { HOTES_IMAGES } from './catalogue/types';
 
 async function demarrer(): Promise<void> {
@@ -102,6 +103,7 @@ async function demarrer(): Promise<void> {
   app.use(routesAdmin(db));
   // Bookloo (fork) : interface épurée — recherche, téléchargements, disques
   app.use(routesSimple(db));
+  app.use(routesLivres());
 
   app.get('/sante', (_req, res) => res.json({ ok: true }));
 

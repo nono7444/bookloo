@@ -16,8 +16,14 @@ export default function RootLayout() {
         <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: C.bg } }}>
           <Stack.Screen name="index" />
           <Stack.Screen name="setup" options={{ gestureEnabled: false }} />
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="web" />
+          <Stack.Screen name="login" options={{ gestureEnabled: false }} />
+          <Stack.Screen name="(tabs)" options={{ gestureEnabled: false }} />
+          <Stack.Screen name="dossier" />
+          <Stack.Screen name="cles" />
+          <Stack.Screen name="lecteur/bd" options={{ animation: 'fade' }} />
+          <Stack.Screen name="lecteur/epub" options={{ animation: 'fade' }} />
+          <Stack.Screen name="lecteur/pdf" options={{ animation: 'fade' }} />
+          <Stack.Screen name="lecteur/audio" options={{ presentation: 'modal' }} />
         </Stack>
       </ServerProvider>
     </SafeAreaProvider>

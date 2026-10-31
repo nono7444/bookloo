@@ -2,6 +2,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
+import { setBase } from './api';
+
 const KEY = 'bookloo.server';
 
 type Ctx = {
@@ -35,12 +37,16 @@ export function ServerProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     AsyncStorage.getItem(KEY)
-      .then((v) => setUrlState(v || null))
+      .then((v) => {
+        setBase(v || null);
+        setUrlState(v || null);
+      })
       .catch(() => {})
       .finally(() => setReady(true));
   }, []);
 
   const setUrl = useCallback(async (u: string | null) => {
+    setBase(u);
     setUrlState(u);
     try {
       if (u) await AsyncStorage.setItem(KEY, u);

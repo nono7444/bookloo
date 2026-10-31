@@ -1,0 +1,39 @@
+/* Bookloo — page de lecture d'un chapitre EPUB (dans l'appli). */
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: "New York", "Iowan Old Style", Georgia, serif;
+  line-height: 1.6;
+  padding: calc(env(safe-area-inset-top) + 64px) 22px calc(env(safe-area-inset-bottom) + 90px);
+  word-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+article { max-width: 680px; margin: 0 auto; }
+img, svg { max-width: 100%; height: auto; display: block; margin: 1em auto; }
+h1, h2, h3 { line-height: 1.25; font-family: -apple-system, system-ui, sans-serif; }
+p { margin: 0 0 0.9em; text-align: justify; }
+a { color: inherit; }
+html.sombre, html.sombre body { background: #000; color: #e8e6e3; }
+html.clair, html.clair body { background: #fff; color: #111; }
+html.sepia, html.sepia body { background: #f4ecd8; color: #3b2f1e; }
+html.t13 body { font-size: 13px; }
+html.t14 body { font-size: 14px; }
+html.t15 body { font-size: 15px; }
+html.t16 body { font-size: 16px; }
+html.t17 body { font-size: 17px; }
+html.t18 body { font-size: 18px; }
+html.t19 body { font-size: 19px; }
+html.t20 body { font-size: 20px; }
+html.t21 body { font-size: 21px; }
+html.t22 body { font-size: 22px; }
+html.t23 body { font-size: 23px; }
+html.t24 body { font-size: 24px; }
+html.t25 body { font-size: 25px; }
+html.t26 body { font-size: 26px; }
+html.t27 body { font-size: 27px; }
+html.t28 body { font-size: 28px; }
+html.t29 body { font-size: 29px; }
+html.t30 body { font-size: 30px; }
+html.t31 body { font-size: 31px; }
+html.t32 body { font-size: 32px; }

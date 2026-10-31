@@ -11,6 +11,7 @@ export const C = {
   accentSoft: 'rgba(230,72,92,0.16)',
   danger: '#FF453A',
   success: '#30D158',
+  warning: '#FFB340',
 } as const;
 
 /** Place laissée en bas des pages : la barre d'onglets flotte au-dessus. */

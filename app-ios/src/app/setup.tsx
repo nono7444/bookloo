@@ -24,7 +24,7 @@ export default function Setup() {
       await checkServer(u);
       await setUrl(u);
       bumpAuth();
-      router.replace('/(tabs)');
+      router.replace('/login');
     } catch (e: any) {
       setError(e?.name === 'AbortError' ? 'Pas de réponse : vérifie l’adresse.' : e?.message ?? String(e));
     } finally {
@@ -60,7 +60,7 @@ export default function Setup() {
             <Text style={{ color: C.textDim, fontSize: 15 }}>Annuler</Text>
           </Pressable>
         ) : null}
-        <Text style={styles.foot}>Ensuite, connecte-toi avec ton compte Bookloo (créé par l’administrateur).</Text>
+        <Text style={styles.foot}>Ensuite, connecte-toi avec ton compte Bookloo.</Text>
       </View>
     </KeyboardAvoidingView>
   );
