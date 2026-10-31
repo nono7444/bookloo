@@ -25,16 +25,21 @@ export default function Reglages() {
       rows: [{ icon: 'server-outline', label: 'Adresse du serveur', sub: url ?? '', onPress: () => router.push('/setup') }],
     },
     {
+      title: 'Téléchargements',
+      rows: [
+        { icon: 'folder-open-outline', label: 'Dossier de téléchargement', sub: 'Sur les disques du serveur', onPress: () => open('/b-dossier.html', 'Dossier') },
+      ],
+    },
+    {
       title: 'Mon compte',
       rows: [
-        { icon: 'key-outline', label: 'Compte et clés de service', sub: 'Débrideur, sources, mot de passe', onPress: () => open('/compte.html', 'Compte') },
-        { icon: 'sparkles-outline', label: 'Nouveautés de Bookloo', onPress: () => open('/changelog.html', 'Nouveautés') },
+        { icon: 'key-outline', label: 'Compte et clés', sub: 'C411, Tr4ker, AllDebrid, mot de passe', onPress: () => open('/compte.html', 'Compte') },
       ],
     },
     {
       title: 'Administration',
       rows: [
-        { icon: 'shield-checkmark-outline', label: 'Administration', sub: 'Comptes, sources, Telegram', onPress: () => open('/admin.html', 'Administration') },
+        { icon: 'shield-checkmark-outline', label: 'Administration', sub: 'Comptes de la famille', onPress: () => open('/admin.html', 'Administration') },
         { icon: 'document-text-outline', label: 'Journal', onPress: () => open('/logs.html', 'Journal') },
       ],
     },

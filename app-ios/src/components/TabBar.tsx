@@ -13,10 +13,8 @@ import { C } from '@/lib/theme';
 const liquid = isLiquidGlassAvailable();
 
 export const TAB_ICONS: Record<string, [keyof typeof Ionicons.glyphMap, keyof typeof Ionicons.glyphMap]> = {
-  index: ['home-outline', 'home'],
-  recherche: ['search-outline', 'search'],
+  index: ['search-outline', 'search'],
   bibliotheque: ['library-outline', 'library'],
-  kiosque: ['newspaper-outline', 'newspaper'],
   reglages: ['settings-outline', 'settings'],
 };
 
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
   bar: {
     flexDirection: 'row',
     width: '100%',
-    maxWidth: 520,
+    maxWidth: 360,
     borderRadius: 32,
     overflow: 'hidden',
     paddingVertical: 7,

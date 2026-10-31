@@ -97,38 +97,14 @@ export function assembler(
   return { certaines: trier(certaines), incertaines: trier(incertaines) };
 }
 
+// BOOKLOO (fork de Norman) : seulement les sources françaises retenues — C411, Tr4ker et
+// Wawacity. Les autres modules restent dans le code mais ne sont plus interrogés.
+const SOURCES_GARDEES = new Set(['c411', 'tr4ker', 'wawacity']);
+
 export function toutesLesSources() {
   const settings = getSettings();
-  return [
-    ...torznabSources(), ...unit3dSources(), nyaaSource(), knabenSource(),
-    // Site public francophone : presse et livres en torrents a trackers publics. Voir
-    // `sources/torrent/worldivx.ts`.
-    worldivxSource(),
-    wawacitySource(),
-    bookysSource(), fourtouticiSource(),
-    // Elle ne sert que Livres et Presse, et le dit elle-meme : les autres rayons
-    // recoivent un tableau vide sans qu'une requete parte.
-    milleEbooksSource(),
-    // Presse et BD seulement ; lisible avec TorBox. Voir `downmagaz.ts`.
-    downmagazSource(),
-    // Livres et presse EN FRANCAIS, lisibles sans debrideur. Ses comics et ses mangas ont
-    // ete ecartes : leurs fichiers ne s'ouvrent plus. Voir `sources/ddl/libgen-liste.ts`.
-    libgenSource(),
-    // Comics americains en editions FRANCAISES, lus depuis Google Drive avec le compte du
-    // membre. Voir `sources/comics-tracker/source.ts`.
-    comicsTrackerSource(),
-    // Zone-ebook ne CHERCHE que pour ses membres : `cleRequise` le fait ecarter proprement
-    // tant que le compte n'est pas renseigne, plutot que de rendre une liste vide qui se
-    // lirait « ce site ne connait pas cette oeuvre ».
-    zoneEbookSource(),
-    // Rend un tableau VIDE tant qu'aucune facade n'est configuree : la source n'existe
-    // alors pas, plutot que d'exister en panne.
-    ...telegramSources(),
-    // Meme regle, sur le domaine. La recherche est anonyme : la source reste utile
-    // avant toute saisie d'identifiants.
-    ...zlibrarySources(),
-  ].filter(
-    (s) => settings.sources[s.id] !== false,
+  return [...torznabSources(), wawacitySource()].filter(
+    (s) => SOURCES_GARDEES.has(s.id) && settings.sources[s.id] !== false,
   );
 }
 

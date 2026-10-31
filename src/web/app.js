@@ -2314,7 +2314,7 @@ async function pageConnexion() {
       });
       // On arrive sur la vitrine, pas sur une recherche : il faut d'abord choisir ce
       // qu'on cherche.
-      location.href = '/accueil.html';
+      location.href = '/b-recherche.html';
     } catch (err) {
       afficherErreur(sortie, err.message);
     }
@@ -2332,18 +2332,14 @@ async function pageCompte() {
     {
       titre: 'Trackers',
       cles: [
-        ['ygg', 'YggReborn', 'passkey Torznab, dans votre profil du tracker'],
-        ['c411', 'C411', 'passkey Torznab'],
-        ['tr4ker', 'Tr4ker', 'passkey Torznab'],
-        ['g3mini', 'Gemini', 'jeton API, dans les parametres du compte'],
-        ['v3x', 'V3X', 'cle API Torznab — livres seulement, ce tracker n a pas de BD'],
+        ['c411', 'C411', 'cle API (la meme que dans Prowlarr)'],
+        ['tr4ker', 'Tr4ker', 'cle API (la meme que dans Prowlarr)'],
       ],
     },
     {
       titre: 'Debrideurs',
       cles: [
-        ['ad', 'AllDebrid', 'cle API'],
-        ['tb', 'TorBox', 'cle API'],
+        ['ad', 'AllDebrid', 'cle API (telechargements et Wawacity)'],
       ],
     },
   ];

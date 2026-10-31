@@ -424,3 +424,29 @@ export function allDebrid(apiKey: string): DebridService {
     },
   };
 }
+
+/** Avancement d'un magnet sur le compte (téléchargements Bookloo). `null` si illisible. */
+export async function etatMagnet(
+  apiKey: string,
+  id: string,
+  signal?: AbortSignal,
+): Promise<{ pret: boolean; code: number | null; statut: string; recu: number; taille: number } | null> {
+  const { data } = await appel<{ magnets?: MagnetAd | MagnetAd[] }>(
+    '/magnet/status',
+    apiKey,
+    { id: String(id) },
+    signal,
+  );
+  const brut = data?.magnets;
+  const m = (Array.isArray(brut) ? brut[0] : brut) as
+    | (MagnetAd & { status?: string; downloaded?: number; size?: number })
+    | undefined;
+  if (!m) return null;
+  return {
+    pret: m.ready === true || m.statusCode === 4,
+    code: typeof m.statusCode === 'number' ? m.statusCode : null,
+    statut: String(m.status ?? ''),
+    recu: Number(m.downloaded ?? 0),
+    taille: Number(m.size ?? 0),
+  };
+}

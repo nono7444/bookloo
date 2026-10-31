@@ -24,19 +24,14 @@ import { routesDebrid } from './routes/debrid';
 import { routesLecture } from './routes/lecture';
 import { routesCompte } from './routes/compte';
 import { routesBibliotheque } from './routes/bibliotheque';
-import { routesTelegram } from './routes/telegram';
-import { routesZlibrary } from './routes/zlibrary';
 import { routesLectureEpub } from './routes/lecture-epub';
 import { routesEcoute } from './routes/ecoute';
 import { routesArchive } from './routes/archive';
-import { routesPresse } from './routes/presse';
-import { routesKiosque } from './routes/kiosque';
 import { routesReglagesSources } from './routes/reglages-sources';
-import { routesTelegramAdmin } from './routes/telegram-admin';
 import { routesLecturePdf } from './routes/lecture-pdf';
-import { routesPrecharge } from './routes/precharge';
 import { routesEmpreinte } from './routes/empreinte';
 import { routesAdmin } from './routes/admin';
+import { routesSimple } from './simple/routes';
 import { HOTES_IMAGES } from './catalogue/types';
 
 async function demarrer(): Promise<void> {
@@ -98,25 +93,21 @@ async function demarrer(): Promise<void> {
   app.use(routesLecture(db));
   app.use(routesCompte(db));
   app.use(routesBibliotheque(db));
-  app.use(routesTelegram());
-  app.use(routesZlibrary(db));
   app.use(routesLectureEpub(db));
   app.use(routesEcoute(db));
   app.use(routesArchive(db));
-  app.use(routesPresse(db));
-  app.use(routesKiosque(db));
   app.use(routesReglagesSources());
-  app.use(routesTelegramAdmin());
   app.use(routesLecturePdf(db));
-  app.use(routesPrecharge());
   app.use(routesEmpreinte());
   app.use(routesAdmin(db));
+  // Bookloo (fork) : interface épurée — recherche, téléchargements, disques
+  app.use(routesSimple(db));
 
   app.get('/sante', (_req, res) => res.json({ ok: true }));
 
   const dossierWeb = path.join(__dirname, 'web');
   app.use(express.static(dossierWeb, { extensions: ['html'] }));
-  app.get('/', (_req, res) => res.sendFile(path.join(dossierWeb, 'index.html')));
+  app.get('/', (_req, res) => res.redirect('/b-recherche.html'));
 
   // « erreur interne » pour tout, sauf ce qui a ete redige pour etre lu. La regle vit dans
   // `core/erreur-lisible.ts`, avec son test.

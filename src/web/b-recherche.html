@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Recherche — Bookloo</title>
+  <link rel="stylesheet" href="/b.css">
+</head>
+<body>
+  <header class="bandeau">
+    <a class="marque" href="/b-recherche.html">Bookloo</a>
+    <a href="/b-recherche.html" aria-current="page">Recherche</a>
+    <a href="/b-biblio.html">Bibliothèque</a>
+    <a href="/b-dossier.html">Dossier</a>
+    <a href="/compte.html">Compte</a>
+  </header>
+  <main>
+    <h1>Recherche</h1>
+    <form id="form" class="champ" role="search">
+      <span id="loupe"></span>
+      <input id="q" type="search" placeholder="Titre ou série : Jujutsu Kaizen…" autocomplete="off" autocorrect="off" enterkeyhint="search">
+    </form>
+    <div id="rayons" class="puces" aria-label="Rayon"></div>
+    <div id="filtres" class="puces cache" aria-label="Afficher"></div>
+    <div id="banniere"></div>
+    <div id="etat" class="etat-sources"></div>
+    <div id="resultats"></div>
+  </main>
+  <script src="/b-commun.js"></script>
+  <script src="/b-recherche.js"></script>
+</body>
+</html>
