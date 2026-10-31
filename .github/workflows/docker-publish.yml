@@ -19,6 +19,8 @@ on:
   push:
     branches: [main]
     tags: ['v*.*.*']
+    # L'appli iPhone a son propre build (ios.yml) : pas d'image Docker pour elle
+    paths-ignore: ['app-ios/**', '.github/workflows/ios.yml']
   workflow_dispatch:
 
 jobs:
